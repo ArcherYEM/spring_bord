@@ -22,7 +22,7 @@ public class FreeBoardController {
 		return "board/free/writeView";
 	}
 
-	@RequestMapping(value="/board/free/write", method = RequestMethod.POST)
+	@RequestMapping(value="/board/free/write", method = RequestMethod.GET)
 	public String write(@RequestParam Map map) throws Exception {
 		freeBoardService.write(map);
 		return "board/free/writeView";
