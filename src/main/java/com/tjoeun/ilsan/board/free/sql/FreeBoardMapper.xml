@@ -11,7 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, title
 			, content
 			, writer
-			, date_format(write_date, '%y-%m-%d %I:%i') as write_date
+			, date_format(write_date, '%y-%m-%d') as write_date
+			, date_format(write_date, '%y-%m-%d %H:%i') as write_date2
 			, rec_cnt
 			, nrec_cnt
 		from

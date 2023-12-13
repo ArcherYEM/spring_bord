@@ -16,9 +16,10 @@
 			<ul>
 				<li>순번 : <c:out value="${free.seq }"/></li>
 				<li>제목 : <c:out value="${free.title }"/></li>
-				<li>내용<br><c:out value="${free.content }"/></li>
+				<li>내용<br>
+					<pre><c:out value="${free.content }"/></pre></li>
 				<li>작성자 : <c:out value="${free.writer }"/></li>
-				<li>작성일시 : <c:out value="${free.write_date }"/></li>
+				<li>작성일시 : <c:out value="${free.write_date2 }"/></li>
 				<li>좋아요 : <c:out value="${free.rec_cnt }"/></li>
 				<li>싫어요 : <c:out value="${free.nrec_cnt }"/></li>
 			</ul>
