@@ -5,18 +5,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper
 	namespace="com.tjoeun.ilsan.board.free.sql.FreeBoardMapper"> <!-- sql mapper 의 경로를 적어야함 -->
 
+	<select id="id" resultType="map">
+		select
+			seq
+			, title
+			, content
+			, writer
+			, write_date
+			, rec_cnt
+			, nrec_cnt
+		from
+			free
+	</select>
+
 	<insert id="write" parameterType="map">
 		insert into free
 		(
-		title
-		, content
-		, writer
+			title
+			, content
+			, writer
 		)
 		values
 		(
-		#{title}
-		, #{content}
-		, #{writer}
+			#{title}
+			, #{content}
+			, #{writer}
 		)
 	</insert>
 

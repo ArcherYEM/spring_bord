@@ -1,5 +1,6 @@
 package com.tjoeun.ilsan.board.free.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 	}
 
+	@Override
+	public List<Map> select() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

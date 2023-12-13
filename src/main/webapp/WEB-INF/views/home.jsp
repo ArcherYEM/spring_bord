@@ -12,8 +12,12 @@
 		<h1>Hello world!</h1>
 		<P>The time on the server is ${serverTime}.</P>
 		<div>
+			<h2>자유게시판</h2>
+		</div>
+		<div>
 			<ul>
-				<li><a href="<c:url value='/board/free/writeView'/>">자유 게시판 글쓰기</a> </li>
+				<li><a href="<c:url value='/board/free/listView'/>">목록</a> </li>
+				<li><a href="<c:url value='/board/free/writeView'/>">글쓰기</a> </li>
 			</ul>
 		</div>		
 	</body>

@@ -16,6 +16,12 @@ public class FreeBoardController {
 	@Autowired
 	FreeBoardService freeBoardService;
 	
+	@RequestMapping(value="/board/free/listView", method = RequestMethod.GET)
+	public String listView() throws Exception {
+		freeBoardService.select();
+		return "board/free/listView";
+	}
+	
 	@RequestMapping(value="/board/free/writeView", method = RequestMethod.GET)
 	public String writeView() {
 		
