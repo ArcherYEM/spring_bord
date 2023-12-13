@@ -4,13 +4,27 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>자유 게시판</title>
-	</head>
-	<body>
-		<div>
-			<h1>게시글 등록 화면</h1>
-		</div>
-	</body>
+<head>
+<meta charset="UTF-8">
+<title>자유 게시판</title>
+</head>
+<body>
+	<div>
+		<h1>게시글 등록 화면</h1>
+	</div>
+	<div>
+		<form id="frm1" action="<c:url value='/board/free/write'/>"
+			method="post">
+			<input type="text" name="title" placeholder="제목을 입력하세요"><br>
+			<textarea name="content" placeholder="내용을 입력하세요"></textarea>
+			<br> <input type="button" id="btnWrite" value="작성"><br>
+		</form>
+	</div>
+	<script>
+		document.getElementById('btnWrite').addEventListener('click',
+				function() {
+					document.getElementById('frm1').submit();
+				});
+	</script>
+</body>
 </html>

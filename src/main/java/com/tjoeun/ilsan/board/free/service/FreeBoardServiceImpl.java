@@ -24,6 +24,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			, rollbackFor = {Exception.class}
 			)
 	public void write(Map map) throws Exception{
+		map.put("writer", "tester");
 		int result = freeBoardDao.write(map);
 		if (1 != result) {
 			throw new Exception();
