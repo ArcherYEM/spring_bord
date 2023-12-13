@@ -17,6 +17,17 @@ public class FreeBoardController {
 	@Autowired
 	FreeBoardService freeBoardService;
 	
+	@RequestMapping(value="/board/free/detail", method = RequestMethod.GET)
+	public String detail(
+			Model model
+			, @RequestParam Map map
+			) throws Exception {
+		
+		model.addAttribute("free", freeBoardService.list(map).get(0));
+		
+		return "board/free/detail";
+	}
+	
 	@RequestMapping(value="/board/free/listView", method = RequestMethod.GET)
 	public String listView(
 			Model model
