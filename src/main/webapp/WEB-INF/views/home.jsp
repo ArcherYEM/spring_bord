@@ -1,14 +1,20 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
-<head>
-	<title>Home</title>
-</head>
-<body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>게시판</title>
+	</head>
+	<body>
+		<h1>Hello world!</h1>
+		<P>The time on the server is ${serverTime}.</P>
+		<div>
+			<ul>
+				<li><a href="<c:url value='/board/free/writeView'/>">자유 게시판 글쓰기</a> </li>
+			</ul>
+		</div>		
+	</body>
 </html>

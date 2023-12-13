@@ -27,7 +27,7 @@ public class FreeBoardController {
 			@RequestParam Map map
 			) throws Exception {
 		freeBoardService.write(map);
-		return "board/free/writeView";
+		return "redirect:/";
 	}
 
 }
