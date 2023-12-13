@@ -19,8 +19,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	FreeBoardDao freeBoardDao;
 	
 	@Override
-	public List<Map> list() {
-		return freeBoardDao.select();
+	public List<Map> list(Map map) {
+		return freeBoardDao.select(map);
 	}
 	
 	@Override

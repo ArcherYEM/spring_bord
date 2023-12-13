@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper
 	namespace="com.tjoeun.ilsan.board.free.sql.FreeBoardMapper"> <!-- sql mapper 의 경로를 적어야함 -->
 
-	<select id="select" resultType="map">
+	<select id="select" resultType="map" parameterType="map">
 		select
 			seq
 			, title
@@ -16,6 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, nrec_cnt
 		from
 			free
+		where
+			1=1
+		<if test="null != seq">
+		and
+			seq = #{seq}
+		</if>
 		order by
 			seq desc
 	</select>

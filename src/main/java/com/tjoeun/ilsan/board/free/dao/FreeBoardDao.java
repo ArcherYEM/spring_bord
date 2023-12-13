@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface FreeBoardDao {
 	
-	public List<Map> select();
+	public List<Map> select(Map map);
 	
 	public int write(Map map);
 

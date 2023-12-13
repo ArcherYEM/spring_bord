@@ -18,9 +18,12 @@ public class FreeBoardController {
 	FreeBoardService freeBoardService;
 	
 	@RequestMapping(value="/board/free/listView", method = RequestMethod.GET)
-	public String listView(Model model) throws Exception {
+	public String listView(
+			Model model
+			, @RequestParam Map map
+			) throws Exception {
 		
-		model.addAttribute("list", freeBoardService.list());
+		model.addAttribute("list", freeBoardService.list(map));
 		
 		return "board/free/listView";
 	}

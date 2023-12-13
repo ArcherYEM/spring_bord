@@ -17,7 +17,9 @@
 				<c:forEach var="free" items="${list }">
 					<li>
 						<c:out value="${free.seq }"/> | 
-						<c:out value="${free.title }"/> | 
+						<a href="<c:url value='/board/free/detail?seq=${free.seq }'/>">
+							<c:out value="${free.title }"/> |
+						</a> 
 						<c:out value="${free.writer }"/> | 
 						<c:out value="${free.write_date }"/>
 					</li>
