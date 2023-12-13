@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +18,10 @@ public class FreeBoardController {
 	FreeBoardService freeBoardService;
 	
 	@RequestMapping(value="/board/free/listView", method = RequestMethod.GET)
-	public String listView() throws Exception {
-		freeBoardService.select();
+	public String listView(Model model) throws Exception {
+		
+		model.addAttribute("list", freeBoardService.list());
+		
 		return "board/free/listView";
 	}
 	

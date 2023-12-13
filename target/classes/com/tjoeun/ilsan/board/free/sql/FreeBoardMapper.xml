@@ -5,17 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper
 	namespace="com.tjoeun.ilsan.board.free.sql.FreeBoardMapper"> <!-- sql mapper 의 경로를 적어야함 -->
 
-	<select id="id" resultType="map">
+	<select id="select" resultType="map">
 		select
 			seq
 			, title
 			, content
 			, writer
-			, write_date
+			, date_format(write_date, '%y-%m-%d %I:%i') as write_date
 			, rec_cnt
 			, nrec_cnt
 		from
 			free
+		order by
+			seq desc
 	</select>
 
 	<insert id="write" parameterType="map">
