@@ -17,7 +17,12 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	
 	@Autowired
 	FreeBoardDao freeBoardDao;
-
+	
+	@Override
+	public List<Map> list() {
+		return freeBoardDao.select();
+	}
+	
 	@Override
 	@Transactional(
 			readOnly = false
@@ -32,10 +37,4 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 	}
 
-	@Override
-	public List<Map> select() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

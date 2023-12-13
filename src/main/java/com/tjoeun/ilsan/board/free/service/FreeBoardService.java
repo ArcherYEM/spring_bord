@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface FreeBoardService {
 	
-	public List<Map> select();
+	public List<Map> list();
 	
 	public void write(Map map) throws Exception;
 
