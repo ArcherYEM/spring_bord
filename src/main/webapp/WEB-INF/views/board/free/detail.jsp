@@ -27,7 +27,7 @@
 	</div>
 	<div style="text-align:center;">
 		<span style="margin:60px; font-size:50px; color:blue;">
-			<img id="btnRec" src="<c:url value='/cdn/images/rec_cnt.png'/>" style="width:100px;">
+			<img id="btnRec" src="<c:url value='/cdn/images/rec_cnt.png'/>" style="width:100px; :hover">
 			<c:out value="${free.rec_cnt }"/>
 		</span>
 		<span style="margin:60px; font-size:50px; color:red;">
@@ -51,8 +51,8 @@
 		document
 				.getElementById('btnDel')
 				.addEventListener(
-						'click',
-						function() {
+						'click'
+						,function() {
 							if (confirm('해당 게시글을 삭제하시겠습니까?')) {
 								document.getElementById('seq').value = '<c:out value="${free.seq }" />';
 								document.getElementById('frm1').submit();
@@ -61,9 +61,12 @@
 		
 		document.getElementById('btnRec').addEventListener('click', function() {
 			$.ajax({
-  			method: "POST",
-  			url: "some.php",
-  			data: { name: "John", location: "Boston" }
+  			method: "post"
+  			,url: "<c:url value='/board/free/rec'/>"
+  			,data: {
+  				seq: "<c:out value='${free.seq }'/>"
+  	  			,recYN: "Y" 
+  				}
 			})
 			  .done(function( msg ) {
 			    alert( "Data Saved: " + msg );
@@ -72,9 +75,12 @@
 		
 		document.getElementById('btnNRec').addEventListener('click', function() {
 			$.ajax({
-  			method: "POST",
-  			url: "some.php",
-  			data: { name: "John", location: "Boston" }
+  			method: "post"
+  			,url: "<c:url value='/board/free/rec'/>"
+  			,data: { 
+  				seq: "<c:out value='${free.seq }'/>"
+  				,recYN: "N" 
+  			}
 			})
 			  .done(function( msg ) {
 			    alert( "Data Saved: " + msg );

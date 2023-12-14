@@ -59,5 +59,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where 
 			seq = #{seq}
 	</update>
+	
+	<update id="updateRec" parameterType="map">
+		update free set 
+		<if test="'Y' == recYN"> 
+			rec_cnt = rec_cnt + 1
+		</if> 
+		<if test="'N' == recYN"> 
+			nrec_cnt = nrec_cnt + 1
+		</if> 
+		where 
+			seq = #{seq}
+	</update>
 
 </mapper>

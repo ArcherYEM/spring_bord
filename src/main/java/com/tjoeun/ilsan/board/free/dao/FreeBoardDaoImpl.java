@@ -39,5 +39,11 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 		return mapper.update(map);
 	}
 
+	@Override
+	public int updateRec(Map map) {
+		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
+		return mapper.updateRec(map);
+	}
+
 
 }

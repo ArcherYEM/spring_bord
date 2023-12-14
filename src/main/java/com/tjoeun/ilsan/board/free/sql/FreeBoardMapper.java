@@ -12,5 +12,7 @@ public interface FreeBoardMapper {
 	public int delete(Map map);
 	
 	public int update(Map map);
+	
+	public int updateRec(Map map);
 
 }

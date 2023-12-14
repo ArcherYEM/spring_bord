@@ -63,6 +63,20 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		}
 	}
 
+	@Override
+	@Transactional(
+			readOnly = false
+			,propagation = Propagation.REQUIRES_NEW
+			,rollbackFor = {Exception.class}
+			)
+	public void updateRec(Map map) throws Exception {
+		int result = freeBoardDao.update(map);
+		if ( 1 != result ) {
+			throw new Exception();
+		}
+		
+	}
+
 	
 
 	

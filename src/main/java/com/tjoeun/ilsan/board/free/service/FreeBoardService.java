@@ -12,5 +12,7 @@ public interface FreeBoardService {
 	public void delete(Map map) throws Exception;
 	
 	public void update(Map map) throws Exception;
+	
+	public void updateRec(Map map) throws Exception;
 
 }
