@@ -15,9 +15,9 @@
 	<div style="width: 850px; border: 2px solid blue;">
 		<ul>
 			<li>순번 : <c:out value="${free.seq }" /></li>
-			<li>제목 : <c:out value="${free.title }" /></li>
+			<li>제목 : <input type="text" name="title" value="<c:out value="${free.title }" />"></li>
 			<li>내용<br>
-			<pre style="width: 800px; white-space: pre-wrap; word-wrap: break-word;"><c:out value="${free.content }" /></pre>
+			<pre style="width: 800px; white-space: pre-wrap; word-wrap: break-word;"><input type="text" name="title" value="<c:out value="${free.content }" />"></pre>
 			</li>
 			<li>작성자 : <c:out value="${free.writer }" /></li>
 			<li>작성일시 : <c:out value="${free.write_date2 }" /></li>

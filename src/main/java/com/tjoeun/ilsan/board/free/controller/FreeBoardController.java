@@ -53,5 +53,13 @@ public class FreeBoardController {
 		return "redirect:/";
 
 	}
+	
+	@RequestMapping(value = "/board/free/updateView", method = RequestMethod.GET)
+	public String updateView(@RequestParam Map map, Model model) throws Exception {
+		
+		model.addAttribute("free", freeBoardService.list(map).get(0));
+		return "board/free/updateView";
+		
+	}
 
 }
