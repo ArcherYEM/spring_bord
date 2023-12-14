@@ -112,7 +112,6 @@ public class FreeBoardController {
 	@RequestMapping(
 			value="/board/free/updateRec"
 			,method=RequestMethod.POST
-			,produces = "text/plain;charset=UTF-8"
 			)
 	@ResponseBody
 	public Map updateRec(
@@ -125,7 +124,7 @@ public class FreeBoardController {
 			freeBoardService.updateRec(map);
 			resultMap.put("result", "success");
 			resultMap.put("data", freeBoardService.list(map).get(0));
-		} catch(Exception e) {
+		} catch(Exception e) {	
 			e.printStackTrace();
 			resultMap.put("result", "fail");
 		}

@@ -27,12 +27,12 @@
 	</div>
 	<div style="text-align:center;">
 		<span style="margin:60px; font-size:50px; color:blue;">
-			<img id="btnRec" src="<c:url value='/cdn/images/rec_cnt.png'/>" style="width:100px; :hover">
-			<c:out value="${free.rec_cnt }"/>
+			<img id="btnRec" src="<c:url value='/cdn/images/rec_cnt.png'/>" style="width:100px;">
+			<span id="spanRecCnt"><c:out value="${free.rec_cnt }"/></span>
 		</span>
 		<span style="margin:60px; font-size:50px; color:red;">
 			<img id="btnNRec" src="<c:url value='/cdn/images/nrec_cnt.png'/>" style="width:100px;">
-			<c:out value="${free.nrec_cnt }"/>
+			<span id="spanNRecCnt"><c:out value="${free.nrec_cnt }"/></span>
 		</span>
 	</div>
 	<div style="text-align:center; margin-top:50px">
@@ -67,11 +67,10 @@
   				seq: "<c:out value='${free.seq }'/>"
   	  			,recYN: "Y" 
   				}
-			})
-			  .done(function( msg ) {
-				  console.log(msg);
-			    if ('success' == msg){
-			    	/*대기 */
+			}).done(function( msg ) {
+			    if ('success' == msg.result){
+			    	$('#spanRecCnt').html(msg.data.rec_cnt);
+			    	$('#spanNRecCnt').html(msg.data.nrec_cnt);
 			    } else {
 			    	alert('서버 장애가 발생했습니다. 잠시후 다시 시도해 주세요');
 			    }
@@ -79,23 +78,24 @@
 		  });
 		
 		document.getElementById('btnNRec').addEventListener('click', function() {
-			$.ajax({
-  			method: "post"
-  			,url: "<c:url value='/board/free/updateRec'/>"
-  			,data: { 
-  				seq: "<c:out value='${free.seq }'/>"
-  				,recYN: "N" 
-  			}
-			})
-			  .done(function( msg ) {
-				  console.log(msg);
-				    if ('success' == msg){
-				    	/*대기 */
-				    } else {
-				    	alert('서버 장애가 발생했습니다. 잠시후 다시 시도해 주세요');
-				    }
-				});
-		  });
+		    $.ajax({
+		        method: "post",
+		        url: "<c:url value='/board/free/updateRec'/>",
+		        data: { 
+		            seq: "<c:out value='${free.seq }'/>",
+		            recYN: "N" 
+		        }
+		    })
+		    .done(function(msg) {
+	        if ('success' == msg.result){
+			    	$('#spanRecCnt').html(msg.data.rec_cnt);
+			    	$('#spanNRecCnt').html(msg.data.nrec_cnt);
+			 	  } else {
+			    	alert('서버 장애가 발생했습니다. 잠시후 다시 시도해 주세요');
+			    }
+		    });
+		});
+
 	</script>
 </body>
 </html>
