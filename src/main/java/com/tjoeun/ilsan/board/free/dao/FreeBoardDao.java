@@ -8,5 +8,7 @@ public interface FreeBoardDao {
 	public List<Map> select(Map map);
 	
 	public int write(Map map);
+	
+	public int delete(Map map);
 
 }

@@ -28,7 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="write" parameterType="map">
-		insert into free
+		insert into 
+			free
 		(
 			title
 			, content
@@ -41,5 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{writer}
 		)
 	</insert>
+	
+	<delete id="delete" parameterType="map">
+		delete from 
+			free
+		where
+			seq = #{seq}
+	</delete>
 
 </mapper>
