@@ -46,7 +46,7 @@ public class FreeBoardController {
 
 	}
 
-	@RequestMapping(value = "/board/free/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/free/delete", method = RequestMethod.POST)
 	public String delete(@RequestParam Map map) throws Exception {
 
 		freeBoardService.delete(map);
