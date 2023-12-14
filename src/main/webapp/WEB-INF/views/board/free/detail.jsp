@@ -62,28 +62,38 @@
 		document.getElementById('btnRec').addEventListener('click', function() {
 			$.ajax({
   			method: "post"
-  			,url: "<c:url value='/board/free/rec'/>"
+  			,url: "<c:url value='/board/free/updateRec'/>"
   			,data: {
   				seq: "<c:out value='${free.seq }'/>"
   	  			,recYN: "Y" 
   				}
 			})
 			  .done(function( msg ) {
-			    alert( "Data Saved: " + msg );
+				  console.log(msg);
+			    if ('success' == msg){
+			    	/*대기 */
+			    } else {
+			    	alert('서버 장애가 발생했습니다. 잠시후 다시 시도해 주세요');
+			    }
 				});
 		  });
 		
 		document.getElementById('btnNRec').addEventListener('click', function() {
 			$.ajax({
   			method: "post"
-  			,url: "<c:url value='/board/free/rec'/>"
+  			,url: "<c:url value='/board/free/updateRec'/>"
   			,data: { 
   				seq: "<c:out value='${free.seq }'/>"
   				,recYN: "N" 
   			}
 			})
 			  .done(function( msg ) {
-			    alert( "Data Saved: " + msg );
+				  console.log(msg);
+				    if ('success' == msg){
+				    	/*대기 */
+				    } else {
+				    	alert('서버 장애가 발생했습니다. 잠시후 다시 시도해 주세요');
+				    }
 				});
 		  });
 	</script>

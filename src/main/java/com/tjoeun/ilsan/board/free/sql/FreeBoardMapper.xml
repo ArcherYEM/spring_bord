@@ -62,10 +62,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateRec" parameterType="map">
 		update free set 
-		<if test="'Y' == recYN"> 
+		<if test=" 'Y'.toString() eq recYN "> 
 			rec_cnt = rec_cnt + 1
 		</if> 
-		<if test="'N' == recYN"> 
+		<if test=" 'N'.toString() eq recYN "> 
 			nrec_cnt = nrec_cnt + 1
 		</if> 
 		where 

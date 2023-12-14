@@ -70,23 +70,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 			,rollbackFor = {Exception.class}
 			)
 	public void updateRec(Map map) throws Exception {
-		int result = freeBoardDao.update(map);
+		int result = freeBoardDao.updateRec(map);
 		if ( 1 != result ) {
 			throw new Exception();
 		}
 		
 	}
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

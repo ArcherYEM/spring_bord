@@ -1,11 +1,11 @@
 package com.tjoeun.ilsan.board.free.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -115,21 +115,22 @@ public class FreeBoardController {
 			,produces = "text/plain;charset=UTF-8"
 			)
 	@ResponseBody
-	public String updateRec(
+	public Map updateRec(
 		@RequestParam Map map
 		) {
 		
-		String msg = "";
+		Map resultMap = new HashMap();
 		
 		try {
 			freeBoardService.updateRec(map);
-			msg = "등록";
+			resultMap.put("result", "success");
+			resultMap.put("data", freeBoardService.list(map).get(0));
 		} catch(Exception e) {
 			e.printStackTrace();
-			msg = "실패";
+			resultMap.put("result", "fail");
 		}
 		
-		return msg;
+		return resultMap;
 	}
 	
 }
