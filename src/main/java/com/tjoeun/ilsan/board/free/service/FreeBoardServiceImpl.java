@@ -37,4 +37,17 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 	}
 
+	@Override
+	@Transactional(
+			readOnly = false
+			, propagation = Propagation.REQUIRES_NEW
+			, rollbackFor = {Exception.class}
+			)
+	public void delete(Map map) throws Exception {
+		int result = freeBoardDao.delete(map);
+		if (1 != result) {
+			throw new Exception();
+		}
+	}
+
 }

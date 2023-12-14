@@ -12,12 +12,14 @@
 	<div>
 		<h1>자유게시판</h1>
 	</div>
-	<div style="width:850px; border:2px solid blue;">
+	<div style="width: 850px; border: 2px solid blue;">
 		<ul>
 			<li>순번 : <c:out value="${free.seq }" /></li>
 			<li>제목 : <c:out value="${free.title }" /></li>
-			<li>내용<br>
-					<pre style="width:800px; white-space:pre-wrap; word-wrap:break-word;"><c:out value="${free.content }" /></pre>
+			<li>내용<br> <pre
+					style="width: 800px; white-space: pre-wrap; word-wrap: break-word;">
+					<c:out value="${free.content }" />
+				</pre>
 			</li>
 			<li>작성자 : <c:out value="${free.writer }" /></li>
 			<li>작성일시 : <c:out value="${free.write_date2 }" /></li>
@@ -26,14 +28,24 @@
 		</ul>
 	</div>
 	<div>
-		<input type="button" id="btnUpd" value="수정"/>
-		<input type="button" id="btnDel" value="삭제"/>
+		<input type="button" id="btnUpd" value="수정" /> <input type="button"
+			id="btnDel" value="삭제" />
 	</div>
+	<form action="<c:url value='/board/free/delete'/>" method="post">
+		<input type="hidden" id="seq" name="seq">
+	</form>
 	<script>
-		document.getElementById('btnUpd').addEventListener('click', function(){});
-		document.getElementById('btnDel').addEventListener('click', function(){
-			location.href='<c:url value="/board/free/delete?seq=${free.seq}"/>';
+		document.getElementById('btnUpd').addEventListener('click', function() {
 		});
+		document
+				.getElementById('btnDel')
+				.addEventListener(
+						'click',
+						function() {
+							if (confirm('해당 게시글을 삭제하시겠습니까?')) {
+								document.getElementById('seq').value = '<c:out value="${free.content }" />';
+							}
+						});
 	</script>
 </body>
 </html>
