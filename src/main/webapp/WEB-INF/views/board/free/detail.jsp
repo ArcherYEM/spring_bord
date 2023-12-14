@@ -31,7 +31,8 @@
 		<input type="button" id="btnUpd" value="수정" /> <input type="button"
 			id="btnDel" value="삭제" />
 	</div>
-	<form action="<c:url value='/board/free/delete'/>" method="post">
+	<form id="frm1" action="<c:url value='/board/free/delete' />"
+		method="post">
 		<input type="hidden" id="seq" name="seq">
 	</form>
 	<script>
@@ -43,7 +44,8 @@
 						'click',
 						function() {
 							if (confirm('해당 게시글을 삭제하시겠습니까?')) {
-								document.getElementById('seq').value = '<c:out value="${free.content }" />';
+								document.getElementById('seq').value = '<c:out value="${free.seq }" />';
+								document.getElementById('frm1').submit();
 							}
 						});
 	</script>
