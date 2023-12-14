@@ -23,6 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and
 			seq = #{seq}
 		</if>
+		and 
+			del_yn = 'N'
 		order by
 			seq desc
 	</select>
@@ -44,10 +46,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<delete id="delete" parameterType="map">
-		delete from 
-			free
-		where
-			seq = #{seq}
+		update free set
+			del_yn = 'Y'
+		where seq = #{seq}
 	</delete>
+	
+	<update id="update" parameterType="map">
+		update free set 
+			title = #{title}
+			, content = #{content} 
+			, update_date = CURRENT_TIMESTAMP
+		where 
+			seq = #{seq}
+	</update>
 
 </mapper>

@@ -14,13 +14,13 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	@Override
 	public List<Map> select(Map map) {
 		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
 		return mapper.select(map);
 	}
-
+	
 	@Override
 	public int write(Map map) {
 		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
@@ -32,5 +32,12 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
 		return mapper.delete(map);
 	}
+	
+	@Override
+	public int update(Map map) {
+		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
+		return mapper.update(map);
+	}
+
 
 }

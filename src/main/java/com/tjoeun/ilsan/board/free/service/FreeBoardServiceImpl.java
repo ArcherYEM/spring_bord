@@ -13,7 +13,7 @@ import com.tjoeun.ilsan.board.free.dao.FreeBoardDao;
 
 @Service
 @EnableTransactionManagement
-public class FreeBoardServiceImpl implements FreeBoardService{
+public class FreeBoardServiceImpl implements FreeBoardService {
 	
 	@Autowired
 	FreeBoardDao freeBoardDao;
@@ -22,32 +22,57 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public List<Map> list(Map map) {
 		return freeBoardDao.select(map);
 	}
+
+	@Override
+	@Transactional(
+			readOnly = false
+			,propagation = Propagation.REQUIRES_NEW
+			,rollbackFor = {Exception.class}
+			)
+	public void write(Map map) throws Exception {
+		map.put("writer", "hongkd");
+		int result = freeBoardDao.write(map);
+		if ( 1 != result ) {
+			throw new Exception();
+		}
+	}
+
+	@Override
+	@Transactional(
+			readOnly = false
+			,propagation = Propagation.REQUIRES_NEW
+			,rollbackFor = {Exception.class}
+			)
+	public void delete(Map map) throws Exception {
+		int result = freeBoardDao.delete(map);
+		if ( 1 != result ) {
+			throw new Exception();
+		}
+	}
 	
 	@Override
 	@Transactional(
 			readOnly = false
-			, propagation = Propagation.REQUIRES_NEW
-			, rollbackFor = {Exception.class}
+			,propagation = Propagation.REQUIRES_NEW
+			,rollbackFor = {Exception.class}
 			)
-	public void write(Map map) throws Exception{
-		map.put("writer", "tester");
-		int result = freeBoardDao.write(map);
-		if (1 != result) {
+	public void update(Map map) throws Exception {
+		int result = freeBoardDao.update(map);
+		if ( 1 != result ) {
 			throw new Exception();
 		}
 	}
 
-	@Override
-	@Transactional(
-			readOnly = false
-			, propagation = Propagation.REQUIRES_NEW
-			, rollbackFor = {Exception.class}
-			)
-	public void delete(Map map) throws Exception {
-		int result = freeBoardDao.delete(map);
-		if (1 != result) {
-			throw new Exception();
-		}
-	}
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
