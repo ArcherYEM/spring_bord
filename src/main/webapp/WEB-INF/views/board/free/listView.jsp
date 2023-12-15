@@ -9,10 +9,10 @@
 		<title>게시판</title>
 	</head>
 	<body>
-		<div style="text-align:center;">
+		<div>
 			<h1>자유게시판</h1>
 		</div>
-		<div style="text-align:center;" >
+		<div >
 			<ul>
 				<c:forEach var="free" items="${list }">
 					<li>
@@ -26,9 +26,10 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<div style="text-align:center">
+		<div>
 			<c:forEach var="page" begin="1" end="${totalPage }">
-				<span>[ ${page } ]</span>&nbsp;
+				<span style="margin:4px;">
+				<a href="<c:url value='/board//free/listView?page=${page }'/>">[ ${page } ]</a></span>
 			</c:forEach>
 		</div>
 	</body>
