@@ -39,6 +39,16 @@
 		<input style="margin-right:30px;" type="button" id="btnUpd" value="수정" />
 		<input style="margin-left:30px;" type="button" id="btnDel" value="삭제" />
 	</div>
+	<hr>
+	<div>
+		<input type="text" id="repCont" placeholder="댓글을 입력하세요" style="width:600px; height:70px;">
+		<input type="button" id="btnRepWrite" value="작성" style="height:70px;">
+	</div>
+	<div>
+		<ul>
+			<li>임시 댓글 입니다</li>
+		</ul>
+	</div>
 	<form id="frm1" action="<c:url value='/board/free/delete' />"
 		method="post">
 		<input type="hidden" id="seq" name="seq">
@@ -80,10 +90,10 @@
 		document.getElementById('btnNRec').addEventListener('click', function() {
 		    $.ajax({
 		        method: "post",
-		        url: "<c:url value='/board/free/updateRec'/>",
-		        data: { 
-		            seq: "<c:out value='${free.seq }'/>",
-		            recYN: "N" 
+		        url: "<c:url value='/board/free/updateRec'/>"
+		        ,data: { 
+		            seq: "<c:out value='${free.seq }'/>"
+		            ,recYN: "N" 
 		        }
 		    })
 		    .done(function(msg) {
@@ -93,6 +103,20 @@
 			 	  } else {
 			    	alert('서버 장애가 발생했습니다. 잠시후 다시 시도해 주세요');
 			    }
+		    });
+		});
+		
+		document.getElementById('btnRepWrite').addEventListener('click', function() {
+		    $.ajax({
+		        method: "post",
+		        url: "<c:url value='/board/free/addRep'/>"
+		        ,data: { 
+		            f_seq: "<c:out value='${free.seq }'/>"
+		            ,content: $('#repCont').val() 
+		        }
+		    })
+		    .done(function(msg) {
+		    	console.log(msg);
 		    });
 		});
 
