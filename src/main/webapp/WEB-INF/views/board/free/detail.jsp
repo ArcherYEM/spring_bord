@@ -45,8 +45,7 @@
 		<input type="button" id="btnRepWrite" value="작성" style="height:70px;">
 	</div>
 	<div>
-		<ul>
-			<li>임시 댓글 입니다</li>
+		<ul id="repArea">
 		</ul>
 	</div>
 	<form id="frm1" action="<c:url value='/board/free/delete' />"
@@ -109,14 +108,57 @@
 		document.getElementById('btnRepWrite').addEventListener('click', function() {
 		    $.ajax({
 		        method: "post",
-		        url: "<c:url value='/board/free/addRep'/>"
-		        ,data: { 
-		            f_seq: "<c:out value='${free.seq }'/>"
-		            ,content: $('#repCont').val() 
+		        url: "<c:url value='/board/free/addRep'/>",
+		        data: { 
+		            f_seq: "<c:out value='${free.seq }'/>",
+		            content: $('#repCont').val()
 		        }
 		    })
 		    .done(function(msg) {
-		    	console.log(msg);
+		        console.log(msg);
+		        if ('success' == msg.result) {
+		        	$('#repArea').html('');  
+		        	$('#repCont').val('');
+		        	let repHtml = '';
+		            $.each(msg.data, function(i, reply) {
+	            		repHtml
+	                +='<li style="color:gray">(' 
+               		+ reply.write_date + ")   <span style='color:blue; font-weight:bold;'>" 
+               		+ reply.content 
+               		+ "</span></li>";
+		            });
+		            $('#repArea').append(repHtml);
+		        } else {
+		            alert('서버 장애가 발생했습니다. 잠시 후 다시 시도해 주세요');
+		        }
+		    });
+		});
+		
+		$(function(){
+			$.ajax({
+		        method: "post",
+		        url: "<c:url value='/board/free/getRep'/>",
+		        data: { 
+		            f_seq: "<c:out value='${free.seq }'/>"
+		        }
+	    })
+		    .done(function(msg) {
+		        console.log(msg);
+		        if ('success' == msg.result) {
+		        	$('#repArea').html('');  
+		        	$('#repCont').val('');
+		        	let repHtml = '';
+		            $.each(msg.data, function(i, reply) {
+	            		repHtml
+	                +='<li style="color:gray">(' 
+               		+ reply.write_date + ")   <span style='color:blue; font-weight:bold;'>" 
+               		+ reply.content 
+               		+ "</span></li>";
+		            });
+		            $('#repArea').append(repHtml);
+		        } else {
+		            alert('서버 장애가 발생했습니다. 잠시 후 다시 시도해 주세요');
+		        }
 		    });
 		});
 

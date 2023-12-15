@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			seq
 			,content
-			,write_date
+			, date_format(write_date, '%y-%m-%d %H:%i') as write_date
 			,f_seq
 		from
 			free_reply

@@ -19,6 +19,25 @@ public class FreeBoardRepController {
 	FreeBoardRepService freeBoardRepService;
 	
 	@RequestMapping(
+			value="/board/free/getRep"
+			,method=RequestMethod.POST
+			)
+	@ResponseBody
+	public Map getRep(
+			@RequestParam Map map
+			) {
+		Map result = new HashMap();
+		try {
+			result.put("result", "success");
+			result.put("data", freeBoardRepService.select(map));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(
 			value="/board/free/addRep"
 			,method=RequestMethod.POST
 			)
