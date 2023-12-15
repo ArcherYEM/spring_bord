@@ -1,4 +1,4 @@
-package com.tjoeun.ilsan.board.free.reply.sql;
+package com.tjoeun.ilsan.board.free.sql;
 
 import java.util.List;
 import java.util.Map;

@@ -115,11 +115,9 @@ public class FreeBoardController {
 			)
 	@ResponseBody
 	public Map updateRec(
-		@RequestParam Map map
-		) {
-		
+			@RequestParam Map map
+			) {
 		Map resultMap = new HashMap();
-		
 		try {
 			freeBoardService.updateRec(map);
 			resultMap.put("result", "success");
