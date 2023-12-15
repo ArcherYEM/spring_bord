@@ -9,10 +9,10 @@
 		<title>게시판</title>
 	</head>
 	<body>
-		<div>
+		<div style="text-align:center;">
 			<h1>자유게시판</h1>
 		</div>
-		<div>
+		<div style="text-align:center;" >
 			<ul>
 				<c:forEach var="free" items="${list }">
 					<li>
@@ -25,6 +25,9 @@
 					</li>
 				</c:forEach>
 			</ul>
+		</div>
+		<div>
+			ppp
 		</div>
 	</body>
 </html>

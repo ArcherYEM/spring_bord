@@ -14,6 +14,12 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	
 	@Autowired
 	SqlSession sqlSession;
+	
+	@Override
+	public Map selectTotalCnt(Map map) {
+		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
+		return mapper.selectTotalCnt(map);
+	}
 
 	@Override
 	public List<Map> select(Map map) {
@@ -44,6 +50,5 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 		FreeBoardMapper mapper = sqlSession.getMapper(FreeBoardMapper.class);
 		return mapper.updateRec(map);
 	}
-
 
 }

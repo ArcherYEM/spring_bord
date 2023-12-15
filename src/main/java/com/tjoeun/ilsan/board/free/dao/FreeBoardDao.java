@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface FreeBoardDao {
 	
+	public Map selectTotalCnt(Map map);
+	
 	public List<Map> select(Map map);
 	
 	public int write(Map map);

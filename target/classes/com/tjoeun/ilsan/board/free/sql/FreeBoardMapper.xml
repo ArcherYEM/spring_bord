@@ -26,9 +26,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and 
 			del_yn = 'N'
 		order by
-			seq desc
+			seq desc 
+		limit #{limit}
+		offset #{offset} 
 	</select>
 
+	<select id="selectTotalCnt" resultType="map" parameterType="map">
+		select
+			count(*) as totalCnt
+		from
+			free
+		where
+			1=1
+		<if test="null != seq">
+		and
+			seq = #{seq}
+		</if>
+		and 
+			del_yn = 'N'
+	</select>	
+		
 	<insert id="write" parameterType="map">
 		insert into 
 			free

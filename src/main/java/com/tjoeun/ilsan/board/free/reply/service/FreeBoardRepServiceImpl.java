@@ -16,7 +16,7 @@ import com.tjoeun.ilsan.board.free.reply.dao.FreeBoardRepDao;
 public class FreeBoardRepServiceImpl implements FreeBoardRepService{
 
 	@Autowired
-	FreeBoardRepDao FreeBoardRepDao;
+	FreeBoardRepDao freeBoardRepDao;
 	
 	@Override
 	@Transactional(
@@ -25,7 +25,7 @@ public class FreeBoardRepServiceImpl implements FreeBoardRepService{
 			,rollbackFor = {Exception.class}
 			)
 	public void insert(Map map) throws Exception {
-		int count = FreeBoardRepDao.insert(map);
+		int count = freeBoardRepDao.insert(map);
 		if ( 1 != count) {
 			throw new Exception();
 		}
@@ -38,9 +38,7 @@ public class FreeBoardRepServiceImpl implements FreeBoardRepService{
 			,rollbackFor = {Exception.class}
 			)
 	public List<Map> select(Map map) {
-		return FreeBoardRepDao.select(map);
+		return freeBoardRepDao.select(map);
 	}
 	
-	
-
 }

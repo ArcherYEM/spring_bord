@@ -43,6 +43,7 @@ public class FreeBoardController {
 			) throws Exception {
 		
 		model.addAttribute("list", freeBoardService.list(map));
+		model.addAttribute("totalPage", freeBoardService.getTotalPage(map));
 		
 		return "board/free/listView";
 	}

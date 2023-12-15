@@ -6,7 +6,7 @@ import java.util.Map;
 public interface FreeBoardRepService {
 	
 	public void insert(Map map) throws Exception;
-
+	
 	public List<Map> select(Map map);
 
 }
