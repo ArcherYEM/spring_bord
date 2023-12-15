@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface FreeBoardService {
 	
-	public int getTotalPage(Map map);
+	public long getTotalPage(Map map);
 	
 	public List<Map> list(Map map);
 	

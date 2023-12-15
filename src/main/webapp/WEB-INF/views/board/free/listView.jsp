@@ -26,8 +26,10 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<div>
-			ppp
+		<div style="text-align:center">
+			<c:forEach var="page" begin="1" end="${totalPage }">
+				<span>[ ${page } ]</span>&nbsp;
+			</c:forEach>
 		</div>
 	</body>
 </html>
