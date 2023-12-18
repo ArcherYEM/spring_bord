@@ -23,20 +23,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and
 				seq = #{seq}
 		</if>
-		<if test="null != fWriteDate">
+		<if test="null != fWriteDate and '' != fWrite">
 			<![CDATA[
 				and 
 					date_format(write_date, '%Y%m%d') &gt;= #{fWriteDate}
 					date_format(write_date, '%Y%m%d') >= #{fWriteDate}
 				]]>
 		</if>
-		<if test="null != tWriteDate">
+		<if test="null != tWriteDate and '' != fWrite">
 			<![CDATA[
 				and 
 					date_format(write_date, '%Y%m%d') &lt;= #{tWriteDate}
 			]]>
 		</if>
-		<if test="null != title">
+		<if test="null != title and '' != fWrite">
 			<![CDATA[
 				and 
 					title like concat('%', #{title}, '%')
@@ -60,6 +60,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="null != seq">
 		and
 			seq = #{seq}
+		</if>
+		<if test="null != fWriteDate and '' != fWrite">
+			<![CDATA[
+				and 
+					date_format(write_date, '%Y%m%d') &gt;= #{fWriteDate}
+					date_format(write_date, '%Y%m%d') >= #{fWriteDate}
+				]]>
+		</if>
+		<if test="null != tWriteDate and '' != fWrite">
+			<![CDATA[
+				and 
+					date_format(write_date, '%Y%m%d') &lt;= #{tWriteDate}
+			]]>
+		</if>
+		<if test="null != title and '' != fWrite">
+			<![CDATA[
+				and 
+					title like concat('%', #{title}, '%')
+			]]>
 		</if>
 	</select>
 		

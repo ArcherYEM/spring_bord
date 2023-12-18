@@ -35,7 +35,7 @@ public class FreeBoardController {
 	
 	@RequestMapping(
 			value="/board/free/listView",
-			method=RequestMethod.GET
+			method= {RequestMethod.GET, RequestMethod.POST}
 			)
 	public String listView(
 			Model model
@@ -44,6 +44,7 @@ public class FreeBoardController {
 		
 		model.addAttribute("list", freeBoardService.list(map));
 		model.addAttribute("totalPage", freeBoardService.getTotalPage(map));
+		model.addAttribute("rp", map);
 		
 		return "board/free/listView";
 	}
