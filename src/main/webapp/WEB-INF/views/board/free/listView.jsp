@@ -32,8 +32,7 @@
 		</div>
 		<div>
 			<c:forEach var="page" begin="1" end="${totalPage }">
-				<span style="margin:4px;">
-				<a href="<c:url value='/board//free/listView?page=${page }'/>">[ ${page } ]</a></span>
+				<span class="spanPage" data-page="${page }" style="margin:4px;">[${page }]</span>
 			</c:forEach>
 		</div>
 		<form id="frm1" action="<c:url value='/board/free/listView'/>" method="post">
@@ -43,6 +42,10 @@
 		</form>
 		<script src="<c:url value='/cdn/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
+			$('.spanPage').on('click', function(){
+				console.log(this);
+			});
+		
 			$('#btnSearch').on('click', function(){
 				$('#title').val($('#titleSearch').val());
 				$('#frm1').submit();
