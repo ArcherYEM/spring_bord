@@ -20,15 +20,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			1=1
 		<if test="null != seq">
-		and
-			seq = #{seq}
+			and
+				seq = #{seq}
 		</if>
-		and 
-			del_yn = 'N'
-		order by
-			seq desc 
-		limit #{limit}
-		offset #{offset} 
+		<if test="null != fWriteDate">
+			<![CDATA[
+				and 
+					date_format(write_date, '%Y%m%d') &gt;= #{fWriteDate}
+					date_format(write_date, '%Y%m%d') >= #{fWriteDate}
+				]]>
+		</if>
+		<if test="null != tWriteDate">
+			<![CDATA[
+				and 
+					date_format(write_date, '%Y%m%d') &lt;= #{tWriteDate}
+			]]>
+		</if>
+		<if test="null != title">
+			<![CDATA[
+				and 
+					title like concat('%', #{title}, '%')
+			]]>
+		</if>
+			and 
+				del_yn = 'N'
+			order by
+				seq desc 
+			limit #{limit}
+			offset #{offset} 
 	</select>
 
 	<select id="selectTotalCnt" resultType="map" parameterType="map">
@@ -42,9 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and
 			seq = #{seq}
 		</if>
-		and 
-			del_yn = 'N'
-	</select>	
+	</select>
 		
 	<insert id="write" parameterType="map">
 		insert into 

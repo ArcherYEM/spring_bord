@@ -12,6 +12,9 @@
 		<div>
 			<h1>자유게시판</h1>
 		</div>
+		<div>
+			검색
+		</div>
 		<div >
 			<ul>
 				<c:forEach var="free" items="${list }">
