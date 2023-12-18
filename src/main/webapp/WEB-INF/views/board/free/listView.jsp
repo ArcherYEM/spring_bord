@@ -36,6 +36,7 @@
 			</c:forEach>
 		</div>
 		<form id="frm1" action="<c:url value='/board/free/listView'/>" method="post">
+			<input type="hidden" name="page" id="page"/>
 			<input type="hidden" name="title" id="title"/>
 			<input type="hidden" name="title" id="fwrite"/>
 			<input type="hidden" name="title" id="twrite"/>
@@ -43,7 +44,8 @@
 		<script src="<c:url value='/cdn/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
 			$('.spanPage').on('click', function(){
-				console.log(this);
+				$('#page').val($(this).data('page'));
+				$('#frm1').submit();
 			});
 		
 			$('#btnSearch').on('click', function(){
