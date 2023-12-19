@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			file
 		where
 			1=1
-		and f_seq=#{f_seq}
+		and f_seq=#{seq}
 	</select>
 
 </mapper>

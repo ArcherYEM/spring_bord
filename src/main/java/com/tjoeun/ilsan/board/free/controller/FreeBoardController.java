@@ -25,8 +25,8 @@ public class FreeBoardController {
 	CommonFileService commonFileService;
 	
 	@RequestMapping(
-			value="/board/free/detail",
-			method=RequestMethod.GET
+			value="/board/free/detail"
+			,method=RequestMethod.GET
 			)
 	public String detail(
 			Model model
@@ -34,14 +34,14 @@ public class FreeBoardController {
 			) throws Exception {
 		
 		model.addAttribute("free", freeBoardService.list(map).get(0));
-		model.addAttribute("file", commonFileService.getFileList(map));
+		model.addAttribute("file", commonFileService.getFileList(map).get(0));
 		
 		return "board/free/detail";
 	}
 	
 	@RequestMapping(
-			value="/board/free/listView",
-			method= {RequestMethod.GET, RequestMethod.POST}
+			value="/board/free/listView"
+			,method= {RequestMethod.GET, RequestMethod.POST}
 			)
 	public String listView(
 			Model model
