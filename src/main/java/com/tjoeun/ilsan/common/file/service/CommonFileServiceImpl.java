@@ -1,6 +1,7 @@
 package com.tjoeun.ilsan.common.file.service;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class CommonFileServiceImpl implements CommonFileService {
 		File newFile = new File(fileUploadPath + n_filename);
 		
 		try {
-		mFile.transferTo(newFile);
+			mFile.transferTo(newFile);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -45,12 +46,17 @@ public class CommonFileServiceImpl implements CommonFileService {
 		map.put("o_filename", o_filename);
 		map.put("n_filename", n_filename);
 		map.put("f_seq", map.get("seq"));
-		commonFileDao.insert(map);
 		int result = commonFileDao.insert(map);
 		if (1 != result) {
 			throw new Exception();
 		}
 	}
+
+	@Override
+	public List<Map> getFileList(Map map) {
+		return commonFileDao.select(map);
+	}
+	
 
 }
 ;
