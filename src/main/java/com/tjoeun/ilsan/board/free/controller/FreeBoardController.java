@@ -1,6 +1,7 @@
 package com.tjoeun.ilsan.board.free.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,10 @@ public class FreeBoardController {
 			) throws Exception {
 		
 		model.addAttribute("free", freeBoardService.list(map).get(0));
-		model.addAttribute("file", commonFileService.getFileList(map).get(0));
+		List<Map> files = commonFileService.getFileList(map);
+		if ( 0 < files.size()) {
+			model.addAttribute("file", commonFileService.getFileList(map).get(0));
+		}
 		
 		return "board/free/detail";
 	}
