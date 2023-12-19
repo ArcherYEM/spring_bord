@@ -2,6 +2,8 @@ package com.tjoeun.ilsan.common.file.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,8 @@ public class CommonFileController {
 			value="/common/file/download"
 			,method=RequestMethod.GET
 			)
-	public void download(@RequestParam Map map) {
-		
+	public void download(HttpServletResponse res, @RequestParam Map map) throws Exception {
+		commonFileService.download(map, res);
 	}
 
 }

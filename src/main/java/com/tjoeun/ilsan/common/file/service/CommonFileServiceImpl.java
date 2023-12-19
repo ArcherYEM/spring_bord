@@ -71,7 +71,7 @@ public class CommonFileServiceImpl implements CommonFileService {
 		
 		try {
 			
-			File file = new File(fileUploadPath + "byte_of_python.pdf");
+			File file = new File(fileUploadPath + map.get("n_filename").toString());
 	
 			if (!file.exists()) {
 				String errorMessage = "File Not Exist.";
@@ -88,7 +88,7 @@ public class CommonFileServiceImpl implements CommonFileService {
 			}
 	
 			res.setContentType(mimeType);
-			res.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
+			res.setHeader("Content-Disposition", String.format("inline; filename=\"" + map.get("o_filename").toString() + "\""));
 			res.setContentLength((int) file.length());
 	
 			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
