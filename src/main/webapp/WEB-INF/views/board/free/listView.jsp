@@ -4,27 +4,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>게시판</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>게시판</title>
+	</head>
+<body style="text-decoration-line: none;">
 	<div>
 		<h1>자유게시판</h1>
 	</div>
 	<div>
 		<input style="width: 30%;" type="text" id="titleSearch"
-			value="<c:out value='${rp.title }'/>" placeholder="제목을 입력하세요" /> <input
-			type="button" id="btnSearch" value="조회">
+			value="<c:out value='${rp.title }'/>" placeholder="제목을 입력하세요" />
+			<input type="button" id="btnSearch" value="조회">
 	</div>
 	<div>
 		<ul>
 			<c:forEach var="free" items="${list }">
-				<li><c:out value="${free.seq }" /> | <a
-					href="<c:url value='/board/free/detail?seq=${free.seq }'/>"> <c:out
-							value="${free.title }" /> |
-				</a> <c:out value="${free.writer }" /> | <c:out
-						value="${free.write_date }" /></li>
+				<li>
+					<c:out value="${free.seq }" /> | 
+					<a href="<c:url value='/board/free/detail?seq=${free.seq }'/>">
+						<c:out value="${free.title }" /> |
+					</a>
+					<c:out value="${free.writer }" /> | 
+					<c:out value="${free.write_date }" />
+				</li>
 			</c:forEach>
 		</ul>
 	</div>
@@ -46,7 +49,8 @@
 	</div>
 	<form id="frm1" action="<c:url value='/board/free/listView'/>" method="post">
 		<input type="hidden" name="page" id="page" />
-		<input type="hidden" name="title" id="title" /> <input type="hidden" name="fwrite" id="fwrite" />
+		<input type="hidden" name="title" id="title" />
+		<input type="hidden" name="fwrite" id="fwrite" />
 		<input type="hidden" name="twrite" id="twrite" />
 	</form>
 	<script src="<c:url value='/cdn/js/jquery-3.7.1.min.js'/>"></script>
