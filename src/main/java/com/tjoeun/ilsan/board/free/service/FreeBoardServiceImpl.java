@@ -23,6 +23,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Autowired
 	CommonFileService commonFileService;
 	
+////////////////////////////////////////////////////////////////////////////////////////
+	
 	@Override
 	public long getTotalPage(Map map) {
 	    long totalCnt = (long) freeBoardDao.selectTotalCnt(map).get("totalCnt");
@@ -34,7 +36,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	    return page;
 	}
-
+	
+//////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Override
 	public List<Map> list(Map map) {
@@ -48,10 +51,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 			map.put("limit", 10);
 			map.put("offset", 10 * (iPage - 1));
 		}
-		
 		return freeBoardDao.select(map);
 	}
 
+////////////////////////////////////////////////////////////////////////////////////////
+	
 	@Override
 	@Transactional(
 			readOnly = false
@@ -64,9 +68,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		if ( 1 != result ) {
 			throw new Exception();
 		}
-		commonFileService.upload(map, mFile);
+		if ( !"".equals(mFile.getOriginalFilename())) {
+			commonFileService.upload(map, mFile);
+		}
 	}
 
+////////////////////////////////////////////////////////////////////////////////////////
+	
 	@Override
 	@Transactional(
 			readOnly = false
@@ -79,6 +87,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 			throw new Exception();
 		}
 	}
+
+////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Override
 	@Transactional(
@@ -93,6 +103,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		}
 	}
 
+////////////////////////////////////////////////////////////////////////////////////////
+	
 	@Override
 	@Transactional(
 			readOnly = false

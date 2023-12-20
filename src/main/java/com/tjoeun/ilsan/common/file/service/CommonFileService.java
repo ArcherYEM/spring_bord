@@ -13,6 +13,6 @@ public interface CommonFileService {
 	
 	public List<Map> getFileList(Map map);
 	
-	public void download(Map map, HttpServletResponse res) throws Exception;
+	public void download(Map map, HttpServletResponse res);
 
 }

@@ -27,7 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			file
 		where
 			1=1
-		and f_seq=#{seq}
+		<if test=" null != f_seq ">
+		and 
+			f_seq=#{f_seq}
+		</if>
+		<if test=" null != seq ">
+		and 
+			seq=#{seq}
+		</if>
 	</select>
 
 </mapper>

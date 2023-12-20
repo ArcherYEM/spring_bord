@@ -25,6 +25,8 @@ public class FreeBoardController {
 	@Autowired
 	CommonFileService commonFileService;
 	
+	///////////////////////////////////////////////////////////////////////
+	
 	@RequestMapping(
 			value="/board/free/detail"
 			,method=RequestMethod.GET
@@ -35,13 +37,18 @@ public class FreeBoardController {
 			) throws Exception {
 		
 		model.addAttribute("free", freeBoardService.list(map).get(0));
-		List<Map> files = commonFileService.getFileList(map);
+		
+		Map fMap = new HashMap();
+		fMap.put("f_seq", map.get("seq"));
+		List<Map> files = commonFileService.getFileList(fMap);
 		if ( 0 < files.size()) {
-			model.addAttribute("file", commonFileService.getFileList(map).get(0));
+			model.addAttribute("file", files.get(0));
 		}
 		
 		return "board/free/detail";
 	}
+	
+	///////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(
 			value="/board/free/listView"
@@ -59,6 +66,8 @@ public class FreeBoardController {
 		return "board/free/listView";
 	}
 	
+	///////////////////////////////////////////////////////////////////////
+	
 	@RequestMapping(
 			value="/board/free/writeView",
 			method=RequestMethod.GET
@@ -67,6 +76,8 @@ public class FreeBoardController {
 		
 		return "board/free/writeView";
 	}
+	
+	///////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(
 			value="/board/free/write",
@@ -82,6 +93,8 @@ public class FreeBoardController {
 		return "redirect:/";
 	}
 	
+	///////////////////////////////////////////////////////////////////////
+	
 	@RequestMapping(
 			value="/board/free/delete"
 			,method=RequestMethod.POST
@@ -94,6 +107,8 @@ public class FreeBoardController {
 		
 		return "redirect:/";
 	}
+	
+	///////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(
 			value="/board/free/updateView"
@@ -108,7 +123,9 @@ public class FreeBoardController {
 		
 		return "board/free/updateView";
 	}
-
+	
+	///////////////////////////////////////////////////////////////////////
+	
 	@RequestMapping(
 			value="/board/free/update"
 			,method=RequestMethod.POST
@@ -121,6 +138,8 @@ public class FreeBoardController {
 		
 		return "redirect:/";
 	}
+	
+	///////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(
 			value="/board/free/updateRec"
